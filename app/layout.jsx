@@ -1,5 +1,6 @@
 import React from "react";
 import "@/assets/styles/globals.css";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "Eco Touch Property Management | Find the perfect Home",
@@ -9,7 +10,8 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <html>
-      <body>{children}</body>
+      <Navbar />
+      <main>{children}</main>
     </html>
   );
 };
