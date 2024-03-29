@@ -1,7 +1,13 @@
-import React from "react";
+import Hero from "@/components/Hero";
+import InforBoxes from "@/components/InforBoxes";
 
-const page = () => {
-  return <div>Home Page</div>;
+const HomePage = () => {
+  return (
+    <>
+      <Hero />
+      <InforBoxes />
+    </>
+  );
 };
 
-export default page;
+export default HomePage;
