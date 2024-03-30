@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import logo1 from "@/assets/images/logo1.png";
+// import logoMain from "@/assets/images/logo-1.jpg";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
