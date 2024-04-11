@@ -1,28 +1,7 @@
 import React from "react";
-import properties from "/Users/nyarjijada/Desktop/Personal-Main-Projects/eco-touch-property/properties.json";
 import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
-
-// this fetches data from the database
-
-async function fetchProperties() {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/properties`,
-      {
-        cache: "no-store",
-      }
-    );
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.log(error);
-  }
-}
+import { fetchProperties } from "@/utils/requests";
 
 const HomeProperties = async () => {
   const properties = await fetchProperties();
