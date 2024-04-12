@@ -1,10 +1,33 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { fetchProperty } from "@/app/properties/requests";
 
-const propertyType = () => {
-  //   console.log("YOOOOH we back baby");
+const PropertyPage = () => {
+  const { id } = useParams();
 
-  return <div>Property Page</div>;
+  const [property, setProperty] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPropertyData = async () => {
+      if (!id) return;
+      try {
+        const property = await fetchProperty(id);
+        setProperty(property);
+      } catch (error) {
+        console.error("Error fetching property data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (property === null) {
+      fetchPropertyData();
+    }
+  }, [id, property]);
+
+  return <div>PropertyPage</div>;
 };
 
-export default propertyType;
+export default PropertyPage;

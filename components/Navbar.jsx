@@ -17,7 +17,7 @@ const Navbar = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="bg-green-800 border-b border-orange-500">
+    <div className="bg-green-800 border-b border-orange-500">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -235,7 +235,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </div>
   );
 };
 
