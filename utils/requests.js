@@ -1,37 +1,33 @@
-//this fetches data from the database
-
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
-async function fetchProperties() {
-    try {
-
-        // Handle the case when the domain is not available yet
+// Fetch all properties
+async function fetchProperties({ showFeatured = false } = {}) {
+  try {
+    // Handle the case where the domain is not available yet
     if (!apiDomain) {
-        return [];
+      return [];
     }
 
     const res = await fetch(
-        `${apiDomain}/properties`,
-        {
-          cache: "no-store",
-        }
-      );
-  
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-  
-      return await res.json();
-    } catch (error) {
-      console.log('Error fetching Properties',error);
-      return []
-    }
-};
+      `${apiDomain}/properties${showFeatured ? '/featured' : ''}`,
+      { cache: 'no-store' }
+    );
 
-// Fetch a single property
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+// Fetch single property
 async function fetchProperty(id) {
   try {
-    // Handle the case when the domain is not available yet
+    // Handle the case where the domain is not available yet
     if (!apiDomain) {
       return null;
     }
@@ -39,15 +35,17 @@ async function fetchProperty(id) {
     const res = await fetch(`${apiDomain}/properties/${id}`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
-    return await res.json();
+    return res.json();
   } catch (error) {
-    console.error("Error fetching property:", error);
+    console.log(error);
     return null;
   }
 }
 
-export { fetchProperties, fetchProperty};
+export { fetchProperties, fetchProperty };
+
+
 
