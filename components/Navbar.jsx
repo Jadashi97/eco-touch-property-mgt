@@ -1,22 +1,23 @@
 "use client";
-import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo1 from "@/assets/images/logo1.png";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [providers, setProviders] = useState(null);
   const { data: session } = useSession();
   const profileImage = session?.user?.image;
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [providers, setProviders] = useState(null);
+
   const pathName = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -28,7 +29,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-green-800 border-b border-orange-500">
+    <nav className="bg-green-800 border-b border-orange-500">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -269,7 +270,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 

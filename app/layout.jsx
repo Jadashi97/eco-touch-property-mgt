@@ -1,4 +1,3 @@
-import React from "react";
 import "@/assets/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import AuthProvider from "@/components/authProvider";
@@ -12,7 +11,7 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <AuthProvider>
-      <html>
+      <html lang="en">
         <Navbar />
         <main>{children}</main>
         <Footer />
