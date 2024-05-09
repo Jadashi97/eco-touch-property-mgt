@@ -21,9 +21,9 @@ const Navbar = () => {
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders();
-
       setProviders(res);
     };
+
     setAuthProviders();
   }, []);
 

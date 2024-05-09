@@ -9,7 +9,7 @@ const PropertyAddForm = () => {
     setMounted(true);
   }, []);
 
-  const [fields, setfields] = useState({
+  const [fields, setFields] = useState({
     type: "Apartment",
     name: "Test Property",
     description: "",
@@ -36,9 +36,69 @@ const PropertyAddForm = () => {
     images: [],
   });
 
-  const handleChange = () => {};
-  const handleAmenitiesChange = () => {};
-  const handleImageChange = () => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // If the field is a nested property (e.g., rates.weekly),
+    // update it correctly using spread and object destructuring.
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+
+      setFields((prevFields) => ({
+        ...prevFields,
+        [outerKey]: {
+          ...prevFields[outerKey],
+          [innerKey]: value,
+        },
+      }));
+    } else {
+      // If it's a top-level property, update it directly.
+      setFields((prevFields) => ({
+        ...prevFields,
+        [name]: value,
+      }));
+    }
+  };
+  const handleAmenitiesChange = (e) => {
+    const { value, checked } = e.target;
+
+    //clone the current amenities array
+    const updateAmenities = [...fields.amenities];
+
+    if (checked) {
+      // If the checkbox is checked, add the value to the array
+      updateAmenities.push(value);
+    } else {
+      // If the checkbox is unchecked, remove the value from the array
+      const index = updateAmenities.indexOf(value);
+      if (index !== -1) {
+        updateAmenities.splice(index, 1);
+      }
+    }
+
+    // Update the state with the updated array of amenities
+    setFields((prevFields) => ({
+      ...prevFields,
+      amenities: updateAmenities,
+    }));
+  };
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+
+    // Clone the current images array
+    const updatedImages = [...fields.images];
+
+    // Add the new files to the array
+    for (const file of files) {
+      updatedImages.push(file);
+    }
+
+    // Update the state with the updated array of images
+    setFields((prevFields) => ({
+      ...prevFields,
+      images: updatedImages,
+    }));
+  };
 
   return (
     mounted && (
