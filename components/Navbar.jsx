@@ -5,7 +5,7 @@ import logo1 from "@/assets/images/logo1.png";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
@@ -17,7 +17,6 @@ const Navbar = () => {
   const [providers, setProviders] = useState(null);
 
   const pathName = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const setAuthProviders = async () => {
