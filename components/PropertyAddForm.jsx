@@ -1,13 +1,8 @@
 "use client";
-
 import { useState, useEffect } from "react";
 
 const PropertyAddForm = () => {
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const [fields, setFields] = useState({
     type: "Apartment",
@@ -35,6 +30,10 @@ const PropertyAddForm = () => {
     },
     images: [],
   });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -568,6 +567,7 @@ const PropertyAddForm = () => {
             accept="image/*"
             multiple
             onChange={handleImageChange}
+            required
           />
         </div>
 
