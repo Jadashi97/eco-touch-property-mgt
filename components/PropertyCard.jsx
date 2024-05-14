@@ -1,7 +1,5 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import pic1 from "@/assets/images/pic1.png";
 import {
   FaBed,
   FaBath,
@@ -13,6 +11,7 @@ import {
 const PropertyCard = ({ property }) => {
   const getRateDisplay = () => {
     const { rates } = property;
+
     if (rates.monthly) {
       return `$${rates.monthly.toLocaleString()}/mo`;
     } else if (rates.weekly) {
@@ -25,13 +24,12 @@ const PropertyCard = ({ property }) => {
   return (
     <div className="rounded-xl shadow-md relative">
       <Image
-        // src={`/images/properties/${property.images[0]}`}
-        src="/images/properties/f1.jpg"
+        src={property.images[0]}
+        alt=" "
         width={0}
         height={0}
-        // sizes="100vw"
-        alt=""
-        className="object-cover rounded-t-xl"
+        sizes="100vw"
+        className="w-full h-auto rounded-t-xl"
       />
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
