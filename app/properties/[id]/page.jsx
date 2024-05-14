@@ -20,10 +20,10 @@ import {
 } from "react-icons/fa";
 
 const PropertyPage = () => {
-  const { id } = useParams();
-
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchPropertyData = async () => {

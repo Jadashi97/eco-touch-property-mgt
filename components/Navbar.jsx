@@ -9,14 +9,9 @@ import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
-  const { data: session } = useSession();
-  const profileImage = session?.user?.image;
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
-
-  const pathName = usePathname();
 
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -26,6 +21,11 @@ const Navbar = () => {
 
     setAuthProviders();
   }, []);
+
+  const { data: session } = useSession();
+  const profileImage = session?.user?.image;
+
+  const pathName = usePathname();
 
   return (
     <nav className="bg-green-800 border-b border-orange-500">
