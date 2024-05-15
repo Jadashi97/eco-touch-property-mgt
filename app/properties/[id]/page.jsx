@@ -6,7 +6,7 @@ import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import PropertyDetails from "@/components/PropertyDetails";
 import PropertyImages from "@/components/PropertyImages";
 import Link from "next/link";
-import Spinner from "@/components/Spinner";
+// import Spinner from "@/components/Spinner";
 import {
   FaBed,
   FaBath,
@@ -54,7 +54,7 @@ const PropertyPage = () => {
 
   return (
     <>
-      {loading && <Spinner loading={loading} />}
+      {/* {loading && <Spinner loading={loading} />} */}
       {!loading && property && (
         <>
           <PropertyHeaderImage image={property.images[0]} />
