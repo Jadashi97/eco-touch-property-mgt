@@ -1,18 +1,13 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { fetchProperty } from "@/utils/requests";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import PropertyDetails from "@/components/PropertyDetails";
 import PropertyImages from "@/components/PropertyImages";
-import Link from "next/link";
 // import Spinner from "@/components/Spinner";
 import {
-  FaBed,
-  FaBath,
-  FaRulerCombined,
-  FaTimes,
-  FaCheck,
   FaPaperPlane,
   FaBookmark,
   FaShare,
