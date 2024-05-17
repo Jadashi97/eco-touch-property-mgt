@@ -65,9 +65,8 @@ export const GET  = async (request) => {
                 email: formData.get('seller_info.email'),
                 phone: formData.get('seller_info.phone'),
             },
-            owner: userId
+            owner: userId,
         };
-
         // upload images to cloudinary
 
         const imageUploadPromises = [];
@@ -85,7 +84,7 @@ export const GET  = async (request) => {
             const result = await cloudinary.uploader.upload(
                 `data:image/png;base64,${imageBase64}`,
                 {
-                    folder: 'propertyPulse'
+                    folder: 'property-Pulse'
                 }
             );
 
