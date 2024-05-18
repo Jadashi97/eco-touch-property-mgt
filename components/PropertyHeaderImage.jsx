@@ -6,12 +6,11 @@ const PropertyHeaderImage = ({ image }) => {
       <div className="container-xl m-auto">
         <div className="grid grid-cols-1">
           <Image
-            src={image}
+            src={image} // Change this line
             alt=""
-            className="object-cover h-[400px] w-full"
-            width={0}
-            height={0}
-            sizes="100vw"
+            className="object-cover h-[400px]"
+            width={1800}
+            height={400}
             priority={true}
           />
         </div>
