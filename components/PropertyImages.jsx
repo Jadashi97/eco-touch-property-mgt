@@ -24,15 +24,15 @@ const PropertyImages = ({ images }) => {
                     : "col-span-1"
                 }`}
               >
-                <Image
+                {/* <Image
                   src={image}
                   alt=""
                   className="object-cover h-[400px] w-full rounded-xl"
                   width={1800}
                   height={400}
                   priority={true}
-                />
-                {/* <Image
+                /> */}
+                <Image
                   src={image}
                   alt=""
                   className="object-cover h-[400px] w-full rounded-xl"
@@ -40,7 +40,7 @@ const PropertyImages = ({ images }) => {
                   height={0}
                   sizes="100vw"
                   priority={true}
-                /> */}
+                />
               </div>
             ))}
           </div>
