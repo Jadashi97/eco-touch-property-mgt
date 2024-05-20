@@ -11,7 +11,7 @@ const PropertyAddForm = () => {
       street: "",
       city: "",
       state: "",
-      zipcode: "",
+      Country: "",
     },
     beds: "",
     baths: "",
@@ -198,10 +198,10 @@ const PropertyAddForm = () => {
           <input
             type="text"
             id="zipcode"
-            name="location.zipcode"
+            name="location.country"
             className="border rounded w-full py-2 px-3 mb-2"
-            placeholder="Zipcode"
-            value={fields.location.zipcode}
+            placeholder="Country"
+            value={fields.location.Country}
             onChange={handleChange}
           />
         </div>
@@ -215,7 +215,7 @@ const PropertyAddForm = () => {
               Beds
             </label>
             <input
-              type="number"
+              type="text"
               id="beds"
               name="beds"
               className="border rounded w-full py-2 px-3"
