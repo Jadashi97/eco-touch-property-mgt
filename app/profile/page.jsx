@@ -23,18 +23,17 @@ const ProfilePage = () => {
       }
 
       try {
-        const res = await fetch(`/api/properties/user/${userId}`, {
-          method: "GET",
-        });
+        const res = await fetch(`/api/properties/user/${userId}`);
 
         if (res.status === 200) {
           const data = await res.json();
           setProperties(data);
-          setLoading(false);
         }
       } catch (error) {
         //handle fetch errors
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
