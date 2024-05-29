@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import profileDefault from "@/assets/images/profile.png";
 import { useState, useEffect } from "react";
-import Spinner from "@/components/Spinner";
+// import Spinner from "@/components/Spinner";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
@@ -64,12 +65,13 @@ const ProfilePage = () => {
         );
         setProperties(updateProperties);
 
-        console.log("Property deleted");
+        toast.success("Property deleted");
       } else {
-        console.error("Failed to delete property");
+        toast.delete("Failed to delete property");
       }
     } catch (error) {
       console.error(error);
+      toast.error("Failed to delete property");
     }
   };
 
